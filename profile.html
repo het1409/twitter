@@ -32,6 +32,15 @@
         width: 24px;
         height: 24px;
         margin-right: 12px;
+        margin-bottom: -50px;
+      }
+      header button{
+        background-color: #1DA1F2;
+        color: white;
+        cursor: pointer;
+        margin-left: 1400px;
+        border: none;
+        margin-bottom: 10px;
       }
     #profile {
       display: flex;
@@ -103,6 +112,7 @@
 			<img src="home.svg" alt="Back">
 		</a>
 		<h1>Profile</h1>
+        <button onclick="logout()">Logout</button>
 	</header>
   <div id="profile">
     <img src="profile.svg" alt="Profile picture">
@@ -129,3 +139,10 @@
     <h3>Tweets</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae est euismod, placerat risus nec, tempus enim. Donec ac pretium sapien. Nulla facilisi. Praesent eu nunc vel odio cursus bibendum. Donec sed leo aliquet, fermentum risus sed, pharetra ante.</p>
     <p>Integer at magna vel dolor pulvinar aliquet ut a nulla. Nunc ac quam eget nisl venenatis imperdiet ut vel lectus. Morbi vel lorem sem. In consectetur nulla eget sagittis convallis. Fusce vitae laoreet turpis. Mauris ut mi nec odio venenatis mattis
+        <script>
+            function logout() {
+              window.location.href = "login.html";
+            }
+          </script>
+        </body>
+      </html>
