@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twitter</title>
+    <script src="func.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <header>
+        
+      <h1 class="logo">
+        <center><img src="tweet.svg" alt="t"></center>
+      </h1>
+
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="#">Notifications</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+        <section id="tweet-section" data-tweets="2">
+          <form id="tweet-form">
+            <textarea id="tweet-input" name="tweet" placeholder="What's happening?" required></textarea>
+            <div class="tweet-buttons">
+                <center><button class="like-button">Tweet</button>
+                </center>
+              </div>
+          </form>
+        </section>
+      </main>
+      <script>
+        const form = document.querySelector('#tweet-form');
+        const tweetSection = document.querySelector('#tweet-section');
+  
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          // Get the tweet input value and create a new tweet article
+          const tweetInput = document.querySelector('#tweet-input');
+          const newTweet = document.createElement('article');
+          const newTweetTitle = document.createElement('h2');
+          const newTweetBody = document.createElement('p');
+          const tweetButtons = document.createElement('div');
+          const deleteButton = document.createElement('button');
+          const likeButton = document.createElement('button');
+          const replyButton = document.createElement('button');
+          const repliesSection = document.createElement('div');
+          const newReply = document.createElement('article');
+
+          // Set the text content and attributes for the new tweet
+          newTweetTitle.textContent = 'Me';
+          newTweetBody.textContent = tweetInput.value;
+          deleteButton.textContent = 'Delete';
+          deleteButton.classList.add('delete-button');
+          likeButton.textContent = 'Like';
+          likeButton.classList.add('like-button');
+          likeButton.dataset.likes = 0;
+          replyButton.textContent = 'Reply';
+          replyButton.classList.add('reply-button');
+          repliesSection.classList.add('replies');
+          tweetButtons.classList.add('tweet-buttons');
+  
+          // Add a click event listener to the delete button
+          deleteButton.addEventListener('click', () => {
+            newTweet.remove();
+            tweetSection.dataset.tweets = Number(tweetSection.dataset.tweets) - 1;
+          });
+  
+          // Add a click event listener to the like button
+          likeButton.addEventListener('click', () => {
+            const likeCount = Number(likeButton.dataset.likes) + 1;
+            likeButton.dataset.likes = likeCount;
+            likeButton.textContent = `Like (${likeCount})`;
+          });
+  
+          // Add the new tweet to the end of the tweet list
+          tweetSection.appendChild(newTweet);
+          newTweet.appendChild(newTweetTitle);
+          newTweet.appendChild(newTweetBody);
+          newTweet.appendChild(tweetButtons);
+          tweetButtons.appendChild(deleteButton);
+          tweetButtons.appendChild(likeButton);
+          tweetButtons.appendChild(tweetButton);
+          replyButtons.appendChild(deleteButton);
+          replyButtons.appendChild(likeButton);
+          newReply.appendChild(newReplyTitle);
+          newReply.appendChild(newReplyBody);
+          newReply.appendChild(replyButtons);
+          newTweet.parentNode.querySelector('.replies').appendChild(newReply);
+          // Reset the form and update the tweet count
+          form.reset();
+          tweetSection.dataset.tweets = Number(tweetSection.dataset.tweets) + 1;
+        });
+      </script>
+      
+    <footer>
+      <p>&copy; 2023 My Twitter Page</p>
+    </footer>
+  </body>
+</html>
